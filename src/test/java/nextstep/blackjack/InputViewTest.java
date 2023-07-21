@@ -14,4 +14,11 @@ public class InputViewTest {
         List<Player> playerList = inputView.getPlayerNames("pobi, jason");
         assertThat(playerList).containsExactly(new Player("pobi"), new Player("jason"));
     }
+
+    @Test
+    void getBetAmount() {
+        Player player = new Player("pobi");
+        player.bet(10000);
+        assertThat(player.getBetAmount()).isEqualTo(10000);
+    }
 }
