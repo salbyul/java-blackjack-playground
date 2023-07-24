@@ -9,12 +9,18 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final String START_MESSAGE = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
-    public static final String ERROR_BET_AMOUNT = "배팅 금액은 숫자만 입력이 가능합니다.";
+    private static final String ERROR_BET_AMOUNT = "배팅 금액은 숫자만 입력이 가능합니다.";
     private final Scanner scanner = new Scanner(System.in);
 
     public List<Player> getPlayer() {
         System.out.println(START_MESSAGE);
-        List<Player> playerList = getPlayerNames(scanner.nextLine());
+        List<Player> playerList = null;
+        try {
+            playerList = getPlayerNames(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            getPlayer();
+        }
         getInputBetAmount(playerList);
         return playerList;
     }
