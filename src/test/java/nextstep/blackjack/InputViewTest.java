@@ -28,6 +28,15 @@ public class InputViewTest {
     }
 
     @Test
+    @DisplayName("중복된 이름이 있을 경우")
+    void duplicatePlayerNames() {
+        InputView inputView = new InputView();
+        assertThatThrownBy(() -> inputView.getPlayerNames("salbyul, salbyul"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 중복될 수 없습니다.");
+    }
+
+    @Test
     @DisplayName("배팅 금액 입력받기")
     void getBetAmount() {
         Player player = new Player("pobi");
