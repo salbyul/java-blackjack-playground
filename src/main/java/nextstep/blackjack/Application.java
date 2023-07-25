@@ -11,11 +11,10 @@ import java.util.List;
 public class Application {
 
     private static final InputView inputView = new InputView();
-    private static Players players;
 
     public static void run() {
         List<Player> playerList = inputView.getPlayer();
-        players = new Players(playerList);
+        Players players = new Players(playerList);
         Deck.giveTwoCards(players);
         ResultView.printCardsAfterReceiveTwoCards(players);
         inputView.getUserInputGetOneMoreCard(players);
