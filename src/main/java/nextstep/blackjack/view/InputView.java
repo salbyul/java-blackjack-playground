@@ -1,6 +1,7 @@
 package nextstep.blackjack.view;
 
 import nextstep.blackjack.Deck;
+import nextstep.blackjack.participant.Dealer;
 import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
 
@@ -81,6 +82,7 @@ public class InputView {
 
     public void getUserInputGetOneMoreCard(Players players) {
         getUserInputGetOneMoreCard(players.getPlayerList());
+        printBlankLine();
     }
 
     public void getUserInputGetOneMoreCard(List<Player> playerList) {

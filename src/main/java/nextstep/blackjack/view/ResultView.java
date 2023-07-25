@@ -5,7 +5,11 @@ import nextstep.blackjack.participant.Participant;
 import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
 
+import java.util.ArrayList;
+
 public class ResultView {
+
+    public static final String MESSAGE_DEALER_GET_ONE_MORE_CARD = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
 
     public static void printParticipantAfterReceiveTwoCards(final Players players) {
         printParticipantsGetTwoCards(players);
@@ -31,5 +35,9 @@ public class ResultView {
 
         participant.getCards().forEach(card -> stringBuilder.append(card.getWholeName()).append(", "));
         System.out.println(stringBuilder.substring(0, stringBuilder.length() - 2));
+    }
+
+    public static void printDealerOneMoreCard() {
+        System.out.println(MESSAGE_DEALER_GET_ONE_MORE_CARD);
     }
 }

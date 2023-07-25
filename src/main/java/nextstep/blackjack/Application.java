@@ -1,5 +1,6 @@
 package nextstep.blackjack;
 
+import nextstep.blackjack.participant.Dealer;
 import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
 import nextstep.blackjack.view.InputView;
@@ -16,5 +17,6 @@ public class Application {
         Deck.giveTwoCards(players);
         ResultView.printParticipantAfterReceiveTwoCards(players);
         inputView.getUserInputGetOneMoreCard(players);
+        Dealer.judgeGetOneMoreCard();
     }
 }

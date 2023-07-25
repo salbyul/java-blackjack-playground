@@ -32,6 +32,10 @@ public class Card {
         return value + shape.getValue();
     }
 
+    public int getValue() {
+        return this.value;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
