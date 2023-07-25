@@ -6,12 +6,12 @@ public class Card {
 
     public static final int NUMBER_OF_SHAPES = 4;
     public static final int COUNTS_OF_EACH_SHAPES = 13;
-    public static final int VALUE_OF_ACE = 1;
-    private static final String ACE_FIRST_LETTER = "A";
-    private static final String KING_FIRST_LETTER = "K";
-    private static final String QUEEN_FIRST_LETTER = "Q";
-    private static final String JACK_FIRST_LETTER = "J";
+    public static final String ACE_FIRST_LETTER = "A";
+    public static final String KING_FIRST_LETTER = "K";
+    public static final String QUEEN_FIRST_LETTER = "Q";
+    public static final String JACK_FIRST_LETTER = "J";
     public static final int MAXIMUM_VALUE_OF_ONE = 10;
+    public static final int VALUE_OF_ACE = 1;
     public static final int VALUE_OF_KING = 11;
     public static final int VALUE_OF_QUEEN = 12;
     public static final int VALUE_OF_JACK = 13;
