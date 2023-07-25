@@ -12,6 +12,9 @@ public class Card {
     private static final String QUEEN_FIRST_LETTER = "Q";
     private static final String JACK_FIRST_LETTER = "J";
     public static final int MAXIMUM_VALUE_OF_ONE = 10;
+    public static final int VALUE_OF_KING = 11;
+    public static final int VALUE_OF_QUEEN = 12;
+    public static final int VALUE_OF_JACK = 13;
     private final Shape shape;
     private final int value;
 
@@ -21,13 +24,13 @@ public class Card {
     }
 
     public String getWholeName() {
-        if (this.value == 1) {
+        if (this.value == VALUE_OF_ACE) {
             return ACE_FIRST_LETTER + shape.getValue();
-        } else if (this.value == 11) {
+        } else if (this.value == VALUE_OF_KING) {
             return KING_FIRST_LETTER + shape.getValue();
-        } else if (this.value == 12) {
+        } else if (this.value == VALUE_OF_QUEEN) {
             return QUEEN_FIRST_LETTER + shape.getValue();
-        } else if (this.value == 13) {
+        } else if (this.value == VALUE_OF_JACK) {
             return JACK_FIRST_LETTER + shape.getValue();
         }
         return value + shape.getValue();
