@@ -14,6 +14,7 @@ public abstract class Participant {
     public static final int VALUE_OF_ACE_ONE_CASE = 1;
     public static final int MAXIMUM_VALUE = 21;
     public static final int ACE_CARD = 1;
+
     private final List<Card> cards = new ArrayList<>();
     private final String name;
 
@@ -38,27 +39,27 @@ public abstract class Participant {
                 .map(Card::getValue)
                 .filter(value -> value != ACE_CARD)
                 .reduce(0, Integer::sum);
-        List<Integer> aceList = cards.stream()
+        long numberOfAce = cards.stream()
                 .map(Card::getValue)
                 .filter(value -> value == ACE_CARD)
-                .collect(Collectors.toList());
-        return calculateAce(sumWithoutAce, aceList);
+                .count();
+        return calculateAce(sumWithoutAce, numberOfAce);
     }
 
-    private int calculateAce(final int sum, final List<Integer> aceList) {
-        if (aceList.size() == 0) {
+    private int calculateAce(final int sum, final long numberOfAce) {
+        if (numberOfAce == 0) {
             return sum;
-        } else if (aceList.size() == 3) {
+        } else if (numberOfAce == 3) {
             return VALUE_OF_THREE_ACES_CASE;
         }
-        List<Integer> allCases = getAllCases(sum, aceList.size());
+        List<Integer> allCases = getAllCases(sum, numberOfAce);
         return allCases.stream()
                 .filter(value -> value <= MAXIMUM_VALUE)
                 .max(Comparator.naturalOrder())
                 .orElse(0); // 존재하지 않을 가능성은 없다.
     }
 
-    private List<Integer> getAllCases(final int sum, final int numberOfAce) {
+    private List<Integer> getAllCases(final int sum, final long numberOfAce) {
         List<Integer> cases = new ArrayList<>();
         if (numberOfAce == 1) {
             cases.add(sum + VALUE_OF_ACE_ELEVEN_CASE);
