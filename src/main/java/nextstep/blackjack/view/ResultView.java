@@ -23,18 +23,37 @@ public class ResultView {
 
     private static void printParticipantsCards(final Players players) {
         printParticipantCards(Dealer.getDealer());
+        blankLine();
         players.getPlayerList()
-                .forEach(ResultView::printParticipantCards);
+                .forEach(player -> {
+                    printParticipantCards(player);
+                    blankLine();
+                });
     }
 
     public static void printParticipantCards(final Participant participant) {
         StringBuilder stringBuilder = new StringBuilder(participant.getName() + ": ");
 
         participant.getCards().forEach(card -> stringBuilder.append(card.getWholeName()).append(", "));
-        System.out.println(stringBuilder.substring(0, stringBuilder.length() - 2));
+        System.out.print(stringBuilder.substring(0, stringBuilder.length() - 2));
     }
 
     public static void printDealerOneMoreCard() {
         System.out.println(MESSAGE_DEALER_GET_ONE_MORE_CARD);
+    }
+
+    public static void printSum(final Players players) {
+        printSum(Dealer.getDealer());
+        players.getPlayerList().forEach(ResultView::printSum);
+    }
+
+    private static void printSum(Participant participant) {
+        printParticipantCards(participant);
+        System.out.print(" - 결과: " + participant.getResult());
+        blankLine();
+    }
+
+    private static void blankLine() {
+        System.out.println();
     }
 }

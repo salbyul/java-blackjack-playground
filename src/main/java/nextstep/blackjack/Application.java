@@ -18,5 +18,6 @@ public class Application {
         ResultView.printParticipantAfterReceiveTwoCards(players);
         inputView.getUserInputGetOneMoreCard(players);
         Dealer.judgeGetOneMoreCard();
+        ResultView.printSum(players);
     }
 }

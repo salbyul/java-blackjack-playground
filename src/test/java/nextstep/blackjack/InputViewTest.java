@@ -2,6 +2,7 @@ package nextstep.blackjack;
 
 import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.view.InputView;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class InputViewTest {
+
+    @BeforeEach
+    void setUp() {
+        Deck.init();
+    }
 
     @Test
     @DisplayName("플레이어의 이름 입력받기")

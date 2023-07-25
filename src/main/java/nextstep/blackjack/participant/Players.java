@@ -20,7 +20,7 @@ public class Players {
                 .orElseThrow(() -> new IllegalArgumentException(ERROR_NO_PLAYER));
     }
 
-    public void receiveCards() {
+    public void receiveCard() {
         playerList.forEach(player -> player.receiveCard(Deck.getCard()));
     }
 

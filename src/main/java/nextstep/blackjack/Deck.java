@@ -17,7 +17,8 @@ public class Deck {
         init();
     }
 
-    private static void init() {
+    public static void init() {
+        deck.clear();
         for (int indexOfShape = 0; indexOfShape < Card.NUMBER_OF_SHAPES; indexOfShape++) {
             addCardsOfShape(indexOfShape);
         }
@@ -46,7 +47,7 @@ public class Deck {
     public static void giveTwoCards(final Players players) {
         for (int i = 0; i < 2; i++) {
             dealer.receiveCard(Deck.getCard());
-            players.receiveCards();
+            players.receiveCard();
         }
     }
 }
