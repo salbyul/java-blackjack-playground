@@ -1,6 +1,7 @@
 package nextstep.blackjack.view;
 
 import nextstep.blackjack.Deck;
+import nextstep.blackjack.participant.Participant;
 import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
 
@@ -11,7 +12,7 @@ public class InputView {
 
     private static final String START_MESSAGE = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
     private static final String ERROR_DUPLICATE_NAME = "이름은 중복될 수 없습니다.";
-    public static final String ERROR_ONE_MORE_CARD = "y 혹은 n만 입력이 가능합니다.";
+    private static final String ERROR_ONE_MORE_CARD = "y 혹은 n만 입력이 가능합니다.";
     private static final String ERROR_BET_AMOUNT = "배팅금액은 0이상의 숫자만 입력이 가능합니다.";
     private final Scanner scanner = new Scanner(System.in);
 
@@ -81,7 +82,7 @@ public class InputView {
 
     public void getUserInputGetOneMoreCard(Players players) {
         List<Player> playerList = players.getPlayerList().stream()
-                .filter(player -> player.getResultValue() != 21)
+                .filter(player -> player.getResultValue() != Participant.MAXIMUM_VALUE)
                 .collect(Collectors.toList());
         getUserInputGetOneMoreCard(playerList);
         printBlankLine();
