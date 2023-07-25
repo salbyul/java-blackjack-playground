@@ -105,19 +105,25 @@ public class InputView {
     private void setAcceptedPlayers(final List<Player> unAcceptedPlayerList) {
         while (unAcceptedPlayerList.size() != 0) {
             Player player = unAcceptedPlayerList.get(0);
-            printGetOneMoreCard(player);
-            String input = scanner.nextLine();
-            addCardIfYes(player, input);
+            addCardIfYes(player);
             unAcceptedPlayerList.remove(player);
             printBlankLine();
         }
     }
 
-    private void addCardIfYes(final Player player, final String input) {
+    private void addCardIfYes(final Player player) {
+        printGetOneMoreCard(player);
+        String input = scanner.nextLine();
         if (isYes(input)) {
             player.receiveCard(Deck.getCard());
             ResultView.printParticipantCards(player);
+            printBlankLine();
+            addCardIfYes(player);
         }
+    }
+
+    private void printGetOneMoreCard(final Player player) {
+        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
     }
 
     private boolean isYes(final String input) {
@@ -125,9 +131,5 @@ public class InputView {
             throw new IllegalArgumentException(ERROR_ONE_MORE_CARD);
         }
         return input.equals("y") || input.equals("Y");
-    }
-
-    private void printGetOneMoreCard(final Player player) {
-        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
     }
 }
