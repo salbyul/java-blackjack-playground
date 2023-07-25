@@ -39,29 +39,29 @@ public abstract class Participant {
                 .map(Card::getValue)
                 .filter(value -> value != ACE_CARD)
                 .reduce(0, Integer::sum);
-        long numberOfAce = cards.stream()
+        long countsOfAce = cards.stream()
                 .map(Card::getValue)
                 .filter(value -> value == ACE_CARD)
                 .count();
-        return calculateAce(sumWithoutAce, numberOfAce);
+        return calculateAce(sumWithoutAce, countsOfAce);
     }
 
-    private int calculateAce(final int sum, final long numberOfAce) {
-        if (numberOfAce == 0) {
+    private int calculateAce(final int sum, final long countsOfAce) {
+        if (countsOfAce == 0) {
             return sum;
-        } else if (numberOfAce == 3) {
+        } else if (countsOfAce == 3) {
             return VALUE_OF_THREE_ACES_CASE;
         }
-        List<Integer> allCases = getAllCases(sum, numberOfAce);
+        List<Integer> allCases = getAllCases(sum, countsOfAce);
         return allCases.stream()
                 .filter(value -> value <= MAXIMUM_VALUE)
                 .max(Comparator.naturalOrder())
                 .orElse(0); // 존재하지 않을 가능성은 없다.
     }
 
-    private List<Integer> getAllCases(final int sum, final long numberOfAce) {
+    private List<Integer> getAllCases(final int sum, final long countsOfAce) {
         List<Integer> cases = new ArrayList<>();
-        if (numberOfAce == 1) {
+        if (countsOfAce == 1) {
             cases.add(sum + VALUE_OF_ACE_ELEVEN_CASE);
             cases.add(sum + VALUE_OF_ACE_ONE_CASE);
             return cases;
