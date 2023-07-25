@@ -20,4 +20,8 @@ public enum Shape {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ERROR_INDEX));
     }
+
+    public String getValue() {
+        return this.value;
+    }
 }

@@ -21,15 +21,15 @@ public class Card {
 
     public String getWholeName() {
         if (this.value == 1) {
-            return ACE_FIRST_LETTER + shape.name();
+            return ACE_FIRST_LETTER + shape.getValue();
         } else if (this.value == 11) {
-            return KING_FIRST_LETTER + shape.name();
+            return KING_FIRST_LETTER + shape.getValue();
         } else if (this.value == 12) {
-            return QUEEN_FIRST_LETTER + shape.name();
+            return QUEEN_FIRST_LETTER + shape.getValue();
         } else if (this.value == 13) {
-            return JACK_FIRST_LETTER + shape.name();
+            return JACK_FIRST_LETTER + shape.getValue();
         }
-        return value + shape.name();
+        return value + shape.getValue();
     }
 
     @Override
