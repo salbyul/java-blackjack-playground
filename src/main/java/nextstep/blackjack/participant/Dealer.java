@@ -8,6 +8,7 @@ public class Dealer extends Participant {
 
     private static final Dealer dealer = new Dealer();
     private static final String DEALER_NAME = "딜러";
+    public static final int NUMBER_CAN_NOT_DRAW = 17;
 
     private Dealer() {
         super(DEALER_NAME);
@@ -28,6 +29,6 @@ public class Dealer extends Participant {
         Integer resultNumber = getCards().stream()
                 .map(Card::getValue)
                 .reduce(0, Integer::sum);
-        return resultNumber < 17;
+        return resultNumber < NUMBER_CAN_NOT_DRAW;
     }
 }
