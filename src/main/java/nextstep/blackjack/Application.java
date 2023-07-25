@@ -15,5 +15,6 @@ public class Application {
         Players players = new Players(playerList);
         Deck.giveTwoCards(players);
         ResultView.printParticipantAfterReceiveTwoCards(players);
+        inputView.getUserInputGetOneMoreCard(players);
     }
 }

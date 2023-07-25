@@ -1,10 +1,9 @@
 package nextstep.blackjack.view;
 
-import nextstep.blackjack.Card;
 import nextstep.blackjack.participant.Dealer;
+import nextstep.blackjack.participant.Participant;
+import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
-
-import java.util.List;
 
 public class ResultView {
 
@@ -22,19 +21,15 @@ public class ResultView {
     }
 
     private static void printParticipantsCards(final Players players) {
-        System.out.print("딜러: ");
-        printCards(Dealer.getDealer().getCards());
+        printParticipantCards(Dealer.getDealer());
         players.getPlayerList()
-                .forEach(player -> {
-                    System.out.print(player.getName() + ": ");
-                    printCards(player.getCards());
-                });
+                .forEach(ResultView::printParticipantCards);
     }
 
-    private static void printCards(final List<Card> cards) {
-        StringBuilder stringBuilder = new StringBuilder();
+    public static void printParticipantCards(final Participant participant) {
+        StringBuilder stringBuilder = new StringBuilder(participant.getName() + ": ");
 
-        cards.forEach(card -> stringBuilder.append(card.getWholeName()).append(", "));
+        participant.getCards().forEach(card -> stringBuilder.append(card.getWholeName()).append(", "));
         System.out.println(stringBuilder.substring(0, stringBuilder.length() - 2));
     }
 }
