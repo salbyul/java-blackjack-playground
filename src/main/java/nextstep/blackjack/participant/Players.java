@@ -27,4 +27,11 @@ public class Players {
     public List<Player> getPlayerList() {
         return playerList;
     }
+
+    public void setPlayerIncome() {
+        playerList.forEach(Player::setIncome);
+        Dealer.getDealer().setIncome(playerList.stream()
+                .map(player -> player.getIncome() * -1)
+                .reduce(Double::sum).orElse(0.0));
+    }
 }

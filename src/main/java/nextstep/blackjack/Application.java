@@ -10,14 +10,17 @@ import java.util.List;
 
 public class Application {
 
+    private static final InputView inputView = new InputView();
+    private static Players players;
+
     public static void run() {
-        InputView inputView = new InputView();
         List<Player> playerList = inputView.getPlayer();
-        Players players = new Players(playerList);
+        players = new Players(playerList);
         Deck.giveTwoCards(players);
-        ResultView.printParticipantAfterReceiveTwoCards(players);
+        ResultView.printCardsAfterReceiveTwoCards(players);
         inputView.getUserInputGetOneMoreCard(players);
         Dealer.judgeGetOneMoreCard();
         ResultView.printSum(players);
+        ResultView.printResultIncome(players);
     }
 }

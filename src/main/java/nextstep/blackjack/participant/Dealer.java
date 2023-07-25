@@ -7,7 +7,7 @@ import nextstep.blackjack.view.ResultView;
 public class Dealer extends Participant {
 
     private static final Dealer dealer = new Dealer();
-    public static final String DEALER_NAME = "Dealer";
+    public static final String DEALER_NAME = "딜러";
 
     private Dealer() {
         super(DEALER_NAME);

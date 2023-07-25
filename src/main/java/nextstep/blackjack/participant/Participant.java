@@ -5,7 +5,6 @@ import nextstep.blackjack.Card;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class Participant {
 
@@ -17,6 +16,7 @@ public abstract class Participant {
 
     private final List<Card> cards = new ArrayList<>();
     private final String name;
+    private double income;
 
     public Participant(final String name) {
         this.name = name;
@@ -34,7 +34,7 @@ public abstract class Participant {
         return this.name;
     }
 
-    public int getResult() {
+    public int getResultValue() {
         int sumWithoutAce = cards.stream()
                 .map(Card::getValue)
                 .filter(value -> value != ACE_CARD)
@@ -69,5 +69,13 @@ public abstract class Participant {
         cases.add(sum + VALUE_OF_ACE_ONE_CASE + VALUE_OF_ACE_ELEVEN_CASE);
         cases.add(sum + VALUE_OF_ACE_ONE_CASE + VALUE_OF_ACE_ONE_CASE);
         return cases;
+    }
+
+    public void setIncome(final double income) {
+        this.income = income;
+    }
+
+    public double getIncome() {
+        return income;
     }
 }

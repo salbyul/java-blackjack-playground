@@ -80,7 +80,10 @@ public class InputView {
     }
 
     public void getUserInputGetOneMoreCard(Players players) {
-        getUserInputGetOneMoreCard(players.getPlayerList());
+        List<Player> playerList = players.getPlayerList().stream()
+                .filter(player -> player.getResultValue() != 21)
+                .collect(Collectors.toList());
+        getUserInputGetOneMoreCard(playerList);
         printBlankLine();
     }
 

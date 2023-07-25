@@ -23,16 +23,44 @@ public class Player extends Participant {
         return this.betAmount;
     }
 
+    public void setIncome() {
+        Dealer dealer = Dealer.getDealer();
+        int dealerResultValue = dealer.getResultValue();
+        int resultValue = getResultValue();
+
+        double income = calculateIncome(dealerResultValue, resultValue);
+        setIncome(income);
+    }
+
+    private double calculateIncome(final int dealerResultValue, final int resultValue) {
+        if (dealerResultValue > MAXIMUM_VALUE) {
+            return getBetAmount();
+        } else if (resultValue > MAXIMUM_VALUE) {
+            return getBetAmount() * -1;
+        } else if (dealerResultValue < MAXIMUM_VALUE && resultValue == MAXIMUM_VALUE && hasTwoCards()) {
+            return getBetAmount() * 1.5;
+        } else if (resultValue > dealerResultValue) {
+            return getBetAmount();
+        } else if (resultValue == dealerResultValue) {
+            return 0;
+        }
+        return getBetAmount() * -1;
+    }
+
+    private boolean hasTwoCards() {
+        return getCards().size() == 2;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Player player = (Player) o;
-        return betAmount == player.betAmount && Objects.equals(getName(), player.getName());
+        return getBetAmount() == player.getBetAmount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), betAmount);
+        return Objects.hash(getBetAmount());
     }
 }

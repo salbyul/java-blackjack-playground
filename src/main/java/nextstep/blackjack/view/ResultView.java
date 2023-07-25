@@ -8,7 +8,7 @@ public class ResultView {
 
     public static final String MESSAGE_DEALER_GET_ONE_MORE_CARD = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
 
-    public static void printParticipantAfterReceiveTwoCards(final Players players) {
+    public static void printCardsAfterReceiveTwoCards(final Players players) {
         printParticipantsGetTwoCards(players);
         printParticipantsCards(players);
     }
@@ -49,11 +49,22 @@ public class ResultView {
 
     private static void printSum(Participant participant) {
         printParticipantCards(participant);
-        System.out.print(" - 결과: " + participant.getResult());
+        System.out.print(" - 결과: " + participant.getResultValue());
         blankLine();
     }
 
     private static void blankLine() {
         System.out.println();
+    }
+
+    public static void printResultIncome(final Players players) {
+        System.out.println("##최종 수익");
+        players.setPlayerIncome();
+        Dealer dealer = Dealer.getDealer();
+        System.out.println(dealer.getName() + ": " + dealer.getIncome());
+        players.getPlayerList()
+                .forEach(player -> {
+                    System.out.println(player.getName() + ": " + (int) player.getIncome());
+                });
     }
 }
