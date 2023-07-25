@@ -46,6 +46,9 @@ public abstract class Participant {
     }
 
     private int calculateAce(final int sum, final long countsOfAce) {
+        if (sum > MAXIMUM_VALUE) {
+            return (int) (sum + countsOfAce);
+        }
         if (countsOfAce == 0) {
             return sum;
         } else if (countsOfAce == 3) {
