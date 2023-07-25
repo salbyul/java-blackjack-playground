@@ -115,15 +115,21 @@ public class InputView {
         printGetOneMoreCard(player);
         String input = scanner.nextLine();
         if (isYes(input)) {
-            player.receiveCard(Deck.getCard());
-            ResultView.printParticipantCards(player);
-            printBlankLine();
-            addCardIfYes(player);
+            addCard(player);
         }
     }
 
     private void printGetOneMoreCard(final Player player) {
         System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
+    }
+
+    private void addCard(final Player player) {
+        player.receiveCard(Deck.getCard());
+        ResultView.printParticipantCards(player);
+        printBlankLine();
+        if (!(player.getResultValue() > Participant.MAXIMUM_VALUE)) {
+            addCardIfYes(player);
+        }
     }
 
     private boolean isYes(final String input) {
