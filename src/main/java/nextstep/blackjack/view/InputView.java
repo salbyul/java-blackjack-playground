@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final String START_MESSAGE = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
-    private static final String ERROR_BET_AMOUNT = "배팅 금액은 숫자만 입력이 가능합니다.";
     private static final String ERROR_DUPLICATE_NAME = "이름은 중복될 수 없습니다.";
     public static final String ERROR_ONE_MORE_CARD = "y 혹은 n만 입력이 가능합니다.";
+    private static final String ERROR_BET_AMOUNT = "배팅금액은 0이상의 숫자만 입력이 가능합니다.";
     private final Scanner scanner = new Scanner(System.in);
 
     public List<Player> getPlayer() {
@@ -49,7 +49,7 @@ public class InputView {
     private void getInputBetAmount(final List<Player> playerList) {
         try {
             getAndSetBetAmount(playerList);
-        } catch (InputMismatchException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(ERROR_BET_AMOUNT);
             getInputBetAmount(playerList);
         }
@@ -64,7 +64,19 @@ public class InputView {
     }
 
     private int parseAmount(final String input) {
-        return Integer.parseInt(input.trim().replaceAll(",", ""));
+        try {
+            int betAmount = Integer.parseInt(input.trim().replaceAll(",", ""));
+            validateBetAmount(betAmount);
+            return betAmount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_BET_AMOUNT);
+        }
+    }
+
+    private void validateBetAmount(final int betAmount) {
+        if (betAmount < 0) {
+            throw new IllegalArgumentException(ERROR_BET_AMOUNT);
+        }
     }
 
     public void getUserInputGetOneMoreCard(Players players) {
