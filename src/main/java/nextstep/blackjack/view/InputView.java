@@ -18,73 +18,76 @@ public class InputView {
 
     public List<Player> getPlayer() {
         printStartMessage();
-        List<Player> playerList = null;
         try {
-            playerList = getPlayerNames(scanner.nextLine());
+            return generatePlayerList();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            getPlayer();
+            return getPlayer();
         }
-        printBlankLine();
-        getInputBetAmount(playerList);
-        return playerList;
     }
 
     private void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    public List<Player> getPlayerNames(final String input) {
-        String[] playerNames = input.split(",");
-        List<Player> players = Arrays.stream(playerNames)
+    private List<Player> generatePlayerList() {
+        List<Player> playerList = transferToPlayerList(scanner.nextLine());
+        printBlankLine();
+        setBetAmount(playerList);
+        return playerList;
+    }
+
+    public List<Player> transferToPlayerList(final String input) {
+        List<Player> players = Arrays.stream(input.split(","))
                 .map(name -> new Player(name.trim()))
                 .collect(Collectors.toList());
+        validateDuplicatedName(players);
+        return players;
+    }
+
+    private void validateDuplicatedName(final List<Player> players) {
         Set<String> nameSet = players.stream()
-                .map(Player::getName).collect(Collectors.toSet());
+                .map(Player::getName)
+                .collect(Collectors.toSet());
         if (nameSet.size() != players.size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NAME);
         }
-        return players;
     }
 
     private void printBlankLine() {
         System.out.println();
     }
 
-    private void getInputBetAmount(final List<Player> playerList) {
+    private void setBetAmount(final List<Player> playerList) {
         try {
-            getAndSetBetAmount(playerList);
+            playerList.forEach(player -> {
+                System.out.println(player.getName() + "의 배팅 금액은?");
+                player.bet(parseAmount(scanner.nextLine()));
+                printBlankLine();
+            });
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_BET_AMOUNT);
-            getInputBetAmount(playerList);
+            setBetAmount(playerList);
         }
-    }
-
-    private void getAndSetBetAmount(final List<Player> playerList) {
-        playerList.forEach(player -> {
-            System.out.println(player.getName() + "의 배팅 금액은?");
-            player.bet(parseAmount(scanner.nextLine()));
-            printBlankLine();
-        });
     }
 
     private int parseAmount(final String input) {
         try {
-            int betAmount = Integer.parseInt(input.trim().replaceAll(",", ""));
-            validateBetAmount(betAmount);
-            return betAmount;
+            return parse(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_BET_AMOUNT);
         }
     }
 
-    private void validateBetAmount(final int betAmount) {
+    private int parse(final String input) {
+        int betAmount = Integer.parseInt(input.trim().replaceAll(",", ""));
         if (betAmount < 0) {
             throw new IllegalArgumentException(ERROR_BET_AMOUNT);
         }
+        return betAmount;
     }
 
-    public void getUserInputGetOneMoreCard(Players players) {
+    public void getUserInputGetOneMoreCard(final Players players) {
         List<Player> playerList = players.getPlayerList().stream()
                 .filter(player -> player.getResultValue() != Participant.MAXIMUM_VALUE)
                 .collect(Collectors.toList());
@@ -92,7 +95,7 @@ public class InputView {
         printBlankLine();
     }
 
-    public void getUserInputGetOneMoreCard(List<Player> playerList) {
+    public void getUserInputGetOneMoreCard(final List<Player> playerList) {
         List<Player> unAcceptedPlayerList = new ArrayList<>(playerList);
         try {
             setAcceptedPlayers(unAcceptedPlayerList);
