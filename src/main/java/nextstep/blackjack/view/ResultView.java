@@ -14,8 +14,7 @@ public class ResultView {
     }
 
     private static void printParticipantsGetTwoCards(final Players players) {
-        System.out.print("딜러와 ");
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder("딜러와 ");
         players.getPlayerList()
                 .forEach(player -> stringBuilder.append(player.getName()).append(", "));
         System.out.println(stringBuilder.substring(0, stringBuilder.length() - 2) + "에게 2장의 카드를 나누었습니다.");
@@ -58,13 +57,11 @@ public class ResultView {
     }
 
     public static void printResultIncome(final Players players) {
-        System.out.println("##최종 수익");
+        System.out.println("## 최종 수익");
         players.setPlayerIncome();
         Dealer dealer = Dealer.getDealer();
-        System.out.println(dealer.getName() + ": " + dealer.getIncome());
+        System.out.println(dealer.getName() + ": " + (int) dealer.getIncome());
         players.getPlayerList()
-                .forEach(player -> {
-                    System.out.println(player.getName() + ": " + (int) player.getIncome());
-                });
+                .forEach(player -> System.out.println(player.getName() + ": " + (int) player.getIncome()));
     }
 }
