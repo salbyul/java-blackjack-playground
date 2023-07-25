@@ -12,7 +12,6 @@ public abstract class Participant {
     public static final int VALUE_OF_ACE_ELEVEN_CASE = 11;
     public static final int VALUE_OF_ACE_ONE_CASE = 1;
     public static final int MAXIMUM_VALUE = 21;
-    public static final int ACE_CARD = 1;
 
     private final List<Card> cards = new ArrayList<>();
     private final String name;
@@ -37,11 +36,11 @@ public abstract class Participant {
     public int getResultValue() {
         int sumWithoutAce = cards.stream()
                 .map(Card::getValue)
-                .filter(value -> value != ACE_CARD)
+                .filter(value -> value != Card.VALUE_OF_ACE)
                 .reduce(0, Integer::sum);
         long countsOfAce = cards.stream()
                 .map(Card::getValue)
-                .filter(value -> value == ACE_CARD)
+                .filter(value -> value == Card.VALUE_OF_ACE)
                 .count();
         return calculateAce(sumWithoutAce, countsOfAce);
     }
