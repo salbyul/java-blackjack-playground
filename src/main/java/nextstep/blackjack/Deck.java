@@ -26,7 +26,7 @@ public class Deck {
     }
 
     private static void addCardsOfShape(final int indexOfShape) {
-        for (int value = Card.VALUE_OF_ACE; value <= Card.NUMBER_OF_EACH_SHAPES; value++) {
+        for (int value = Card.VALUE_OF_ACE; value <= Card.COUNTS_OF_EACH_SHAPES; value++) {
             deck.add(new Card(Shape.getShapeByIndex(indexOfShape), value));
         }
     }

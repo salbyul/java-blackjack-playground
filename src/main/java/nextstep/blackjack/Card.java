@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Card {
 
     public static final int NUMBER_OF_SHAPES = 4;
-    public static final int NUMBER_OF_EACH_SHAPES = 13;
+    public static final int COUNTS_OF_EACH_SHAPES = 13;
     public static final int VALUE_OF_ACE = 1;
     private static final String ACE_FIRST_LETTER = "A";
     private static final String KING_FIRST_LETTER = "K";
