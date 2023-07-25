@@ -29,9 +29,7 @@ public class InputViewTest {
     @DisplayName("플레이어의 이름 입력이 존재하지 않을 시")
     void getNoPlayer() {
         InputView inputView = new InputView();
-        assertThatThrownBy(() -> {
-            inputView.transferToPlayerList("");
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> inputView.transferToPlayerList("")).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 적어도 한글자 이상 입력되어야 합니다.");
     }
 
