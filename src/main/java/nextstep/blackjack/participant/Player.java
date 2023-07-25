@@ -1,13 +1,17 @@
-package nextstep.blackjack;
+package nextstep.blackjack.participant;
 
 import java.util.Objects;
 
-public class Player {
+public class Player extends Participant {
 
+    private static final String ERROR_NO_PLAYER_NAME = "이름은 적어도 한글자 이상 입력되어야 합니다.";
     private final String name;
     private int betAmount;
 
     public Player(final String name) {
+        if (name.length() == 0) {
+            throw new IllegalArgumentException(ERROR_NO_PLAYER_NAME);
+        }
         this.name = name;
     }
 
