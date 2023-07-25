@@ -11,6 +11,7 @@ public class Card {
     private static final String KING_FIRST_LETTER = "K";
     private static final String QUEEN_FIRST_LETTER = "Q";
     private static final String JACK_FIRST_LETTER = "J";
+    public static final int MAXIMUM_VALUE = 10;
     private final Shape shape;
     private final int value;
 
@@ -33,7 +34,7 @@ public class Card {
     }
 
     public int getValue() {
-        return this.value;
+        return Math.min(this.value, MAXIMUM_VALUE);
     }
 
     @Override
