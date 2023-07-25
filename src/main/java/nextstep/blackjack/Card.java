@@ -7,12 +7,29 @@ public class Card {
     public static final int NUMBER_OF_SHAPES = 4;
     public static final int NUMBER_OF_EACH_SHAPES = 13;
     public static final int VALUE_OF_ACE = 1;
+    private static final String ACE_FIRST_LETTER = "A";
+    private static final String KING_FIRST_LETTER = "K";
+    private static final String QUEEN_FIRST_LETTER = "Q";
+    private static final String JACK_FIRST_LETTER = "J";
     private final Shape shape;
     private final int value;
 
     public Card(final Shape shape, final int value) {
         this.shape = shape;
         this.value = value;
+    }
+
+    public String getWholeName() {
+        if (this.value == 1) {
+            return ACE_FIRST_LETTER + shape.name();
+        } else if (this.value == 11) {
+            return KING_FIRST_LETTER + shape.name();
+        } else if (this.value == 12) {
+            return QUEEN_FIRST_LETTER + shape.name();
+        } else if (this.value == 13) {
+            return JACK_FIRST_LETTER + shape.name();
+        }
+        return value + shape.name();
     }
 
     @Override

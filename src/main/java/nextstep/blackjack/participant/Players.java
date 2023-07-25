@@ -23,4 +23,8 @@ public class Players {
     public void receiveCards() {
         playerList.forEach(player -> player.receiveCard(Deck.getCard()));
     }
+
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
 }
