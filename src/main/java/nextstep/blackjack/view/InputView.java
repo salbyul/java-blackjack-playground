@@ -100,14 +100,14 @@ public class InputView {
             Player player = unAcceptedPlayerList.get(0);
             printGetOneMoreCard(player);
             String input = scanner.nextLine();
-            addCardIfYes(unAcceptedPlayerList, player, input);
+            addCardIfYes(player, input);
+            unAcceptedPlayerList.remove(player);
             printBlankLine();
         }
     }
 
-    private void addCardIfYes(final List<Player> unAcceptedPlayerList, final Player player, final String input) {
+    private void addCardIfYes(final Player player, final String input) {
         if (isYes(input)) {
-            unAcceptedPlayerList.remove(player);
             player.receiveCard(Deck.getCard());
             ResultView.printParticipantCards(player);
         }
