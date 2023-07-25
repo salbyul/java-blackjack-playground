@@ -2,10 +2,7 @@ package nextstep.blackjack.view;
 
 import nextstep.blackjack.participant.Dealer;
 import nextstep.blackjack.participant.Participant;
-import nextstep.blackjack.participant.Player;
 import nextstep.blackjack.participant.Players;
-
-import java.util.ArrayList;
 
 public class ResultView {
 
