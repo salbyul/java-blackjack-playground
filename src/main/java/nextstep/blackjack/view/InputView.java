@@ -47,6 +47,10 @@ public class InputView {
         return players;
     }
 
+    private void printBlankLine() {
+        System.out.println();
+    }
+
     private void getInputBetAmount(final List<Player> playerList) {
         try {
             getAndSetBetAmount(playerList);
@@ -116,10 +120,6 @@ public class InputView {
         }
     }
 
-    private void printGetOneMoreCard(final Player player) {
-        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
-    }
-
     private boolean isYes(final String input) {
         if (!(input.equals("y") || input.equals("Y") || input.equals("n") || input.equals("N"))) {
             throw new IllegalArgumentException(ERROR_ONE_MORE_CARD);
@@ -127,7 +127,7 @@ public class InputView {
         return input.equals("y") || input.equals("Y");
     }
 
-    private void printBlankLine() {
-        System.out.println();
+    private void printGetOneMoreCard(final Player player) {
+        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
     }
 }
