@@ -1,4 +1,4 @@
-package nextstep.blackjack;
+package nextstep.blackjack.view;
 
 import nextstep.blackjack.participant.Player;
 

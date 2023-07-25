@@ -1,6 +1,7 @@
 package nextstep.blackjack;
 
 import nextstep.blackjack.participant.Player;
+import nextstep.blackjack.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
