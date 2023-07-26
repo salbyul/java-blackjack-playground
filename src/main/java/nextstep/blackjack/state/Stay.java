@@ -1,4 +1,4 @@
-package nextstep.blackjack;
+package nextstep.blackjack.state;
 
 public class Stay extends Finished {
 

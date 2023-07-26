@@ -1,14 +1,14 @@
-package nextstep.blackjack;
+package nextstep.blackjack.state;
 
-public class Finished extends Started {
+public class Running extends Started {
 
-    public Finished(final Cards cards) {
+    public Running(final Cards cards) {
         super(cards);
     }
 
     @Override
     public State draw(final PlayingCard card) {
-        return this;
+        return null;
     }
 
     @Override
@@ -18,6 +18,6 @@ public class Finished extends Started {
 
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 }

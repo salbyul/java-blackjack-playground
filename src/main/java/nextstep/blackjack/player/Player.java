@@ -1,4 +1,8 @@
-package nextstep.blackjack;
+package nextstep.blackjack.player;
+
+import nextstep.blackjack.state.Cards;
+import nextstep.blackjack.state.Hit;
+import nextstep.blackjack.state.State;
 
 public class Player {
 
