@@ -2,6 +2,7 @@ package nextstep.blackjack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -13,9 +14,14 @@ public class Deck {
         Arrays.stream(Denomination.values())
                 .forEach(denomination -> Arrays.stream(Suit.values())
                         .forEach(suit -> deck.add(new PlayingCard(denomination, suit))));
+        Collections.shuffle(deck);
     }
 
     public static int size() {
         return deck.size();
+    }
+
+    public static PlayingCard getCard() {
+        return deck.get(0);
     }
 }
