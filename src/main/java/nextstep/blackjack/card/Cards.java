@@ -25,4 +25,10 @@ public class Cards {
                 .map(PlayingCard::getValue)
                 .reduce(0, Integer::sum) > 21;
     }
+
+    public String getCardListByString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        cards.forEach(card -> stringBuilder.append(card).append(", "));
+        return stringBuilder.substring(0, stringBuilder.length() - 2);
+    }
 }

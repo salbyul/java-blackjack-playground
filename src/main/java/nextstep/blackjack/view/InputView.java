@@ -1,6 +1,7 @@
 package nextstep.blackjack.view;
 
 import nextstep.blackjack.player.Player;
+import nextstep.blackjack.state.State;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +18,7 @@ public class InputView {
     public void start() {
         List<Player> players = getPlayer();
         setBet(players);
+        ResultView.printPlayerCard(players);
     }
 
     private List<Player> getPlayer() {

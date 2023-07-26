@@ -13,4 +13,13 @@ public class PlayingCard {
     public int getValue() {
         return this.denomination.getValue();
     }
+
+    public String getSuit() {
+        return suit.getSuit();
+    }
+
+    @Override
+    public String toString() {
+        return getValue() + getSuit();
+    }
 }
