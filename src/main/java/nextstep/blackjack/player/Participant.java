@@ -2,6 +2,7 @@ package nextstep.blackjack.player;
 
 import nextstep.blackjack.card.Cards;
 import nextstep.blackjack.card.Deck;
+import nextstep.blackjack.state.Blackjack;
 import nextstep.blackjack.state.Hit;
 import nextstep.blackjack.state.State;
 
@@ -47,5 +48,11 @@ public abstract class Participant {
             return;
         }
         setState(state.stay());
+    }
+
+    public void checkBlackjack() {
+        if (this.state.cards().isBlackjack()) {
+            this.setState(new Blackjack(state.cards()));
+        }
     }
 }

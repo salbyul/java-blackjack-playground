@@ -21,7 +21,12 @@ public class InputView {
         List<Player> players = getPlayer();
         setBet(players);
         ResultView.printPlayerCard(players);
+        checkBlackjack(players);
         getMoreCards(players);
+    }
+
+    private void checkBlackjack(final List<Player> players) {
+        players.forEach(Player::checkBlackjack);
     }
 
     private List<Player> getPlayer() {

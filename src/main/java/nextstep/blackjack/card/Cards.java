@@ -39,4 +39,21 @@ public class Cards {
                 .map(PlayingCard::getValue)
                 .reduce(0, Integer::sum);
     }
+
+    public boolean isBlackjack() {
+        if (cards.size() == 2) {
+            return hasAce() && hasTen();
+        }
+        return false;
+    }
+
+    private boolean hasAce() {
+        return cards.stream()
+                .anyMatch(PlayingCard::isAce);
+    }
+
+    private boolean hasTen() {
+        return cards.stream()
+                .anyMatch(PlayingCard::isTen);
+    }
 }

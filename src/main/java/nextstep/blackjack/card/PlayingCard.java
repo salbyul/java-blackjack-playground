@@ -22,4 +22,12 @@ public class PlayingCard {
     public String toString() {
         return getValue() + getSuit();
     }
+
+    public boolean isAce() {
+        return this.denomination.getValue() == 1;
+    }
+
+    public boolean isTen() {
+        return this.denomination.getValue() == 10;
+    }
 }
