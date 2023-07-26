@@ -56,4 +56,26 @@ public class Cards {
         return cards.stream()
                 .anyMatch(PlayingCard::isTen);
     }
+
+    public int getResultValue() {
+        int sumWithoutAce = cards.stream()
+                .filter(card -> !card.isAce())
+                .map(PlayingCard::getValue)
+                .reduce(0, Integer::sum);
+        long countsOfAce = cards.stream()
+                .filter(PlayingCard::isAce)
+                .map(PlayingCard::getValue)
+                .count();
+        return calculateResultValue(sumWithoutAce, countsOfAce);
+    }
+
+    private int calculateResultValue(final int sumWithoutAce, final long countsOfAce) {
+        if (countsOfAce == 0) {
+            return sumWithoutAce;
+        }
+        if (sumWithoutAce + 11 <= 21) {
+            return sumWithoutAce + 11;
+        }
+        return sumWithoutAce + 1;
+    }
 }

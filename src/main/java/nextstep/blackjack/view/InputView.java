@@ -23,9 +23,12 @@ public class InputView {
         ResultView.printPlayerCard(players);
         checkBlackjack(players);
         getMoreCards(players);
+        ResultView.printResultValue(players);
+        ResultView.printProfits(players);
     }
 
     private void checkBlackjack(final List<Player> players) {
+        Dealer.INSTANCE.checkBlackjack();
         players.forEach(Player::checkBlackjack);
     }
 
@@ -72,7 +75,7 @@ public class InputView {
     private void getMoreCards(final List<Player> players) {
         players.forEach(this::getMoreCards);
         Dealer dealer = Dealer.INSTANCE;
-        if (dealer.isLessThanSevenTeen()) {
+        if (dealer.isLessThanSevenTeen() && !dealer.getState().isBlackjack()) {
             System.out.println(DEALER_GET_MORE_CARD);
             dealer.progress(true);
         }

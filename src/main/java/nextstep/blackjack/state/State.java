@@ -12,4 +12,8 @@ public interface State {
     State stay();
 
     boolean isFinished();
+
+    double profit(final double betAmount);
+
+    boolean isBlackjack();
 }

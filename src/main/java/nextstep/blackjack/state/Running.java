@@ -23,4 +23,14 @@ public class Running extends Started {
     public boolean isFinished() {
         return false;
     }
+
+    @Override
+    public double profit(final double betAmount) {
+        return 0;
+    }
+
+    @Override
+    public boolean isBlackjack() {
+        return false;
+    }
 }
