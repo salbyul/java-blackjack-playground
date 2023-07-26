@@ -1,6 +1,7 @@
 package nextstep.blackjack.player;
 
 import nextstep.blackjack.card.Cards;
+import nextstep.blackjack.card.Deck;
 import nextstep.blackjack.state.Hit;
 import nextstep.blackjack.state.State;
 
@@ -27,8 +28,24 @@ public abstract class Participant {
         return this.state;
     }
 
+    public void setState(final State state) {
+        this.state = state;
+    }
+
     public void printCards() {
         final String result = getName() + ": " + state.cards().getCardListByString();
         System.out.println(result);
+    }
+
+    public void progress(final boolean canProgress) {
+        if (state.isFinished()) {
+            return;
+        }
+        if (canProgress) {
+            setState(state.draw(Deck.getCard()));
+            printCards();
+            return;
+        }
+        setState(state.stay());
     }
 }

@@ -21,14 +21,22 @@ public class Cards {
     }
 
     public boolean isBust() {
-        return cards.stream()
-                .map(PlayingCard::getValue)
-                .reduce(0, Integer::sum) > 21;
+        return getResulValue() > 21;
     }
 
     public String getCardListByString() {
         StringBuilder stringBuilder = new StringBuilder();
         cards.forEach(card -> stringBuilder.append(card).append(", "));
         return stringBuilder.substring(0, stringBuilder.length() - 2);
+    }
+
+    public boolean isLessThanSevenTeen() {
+        return getResulValue() < 17;
+    }
+
+    private int getResulValue() {
+        return cards.stream()
+                .map(PlayingCard::getValue)
+                .reduce(0, Integer::sum);
     }
 }
