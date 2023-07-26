@@ -1,6 +1,6 @@
 package nextstep.blackjack.player;
 
-import nextstep.blackjack.state.Cards;
+import nextstep.blackjack.card.Cards;
 import nextstep.blackjack.state.Hit;
 import nextstep.blackjack.state.State;
 

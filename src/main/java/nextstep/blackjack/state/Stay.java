@@ -1,5 +1,7 @@
 package nextstep.blackjack.state;
 
+import nextstep.blackjack.card.Cards;
+
 public class Stay extends Finished {
 
     public Stay(final Cards cards) {

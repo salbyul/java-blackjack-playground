@@ -1,6 +1,6 @@
 package nextstep.blackjack;
 
-import nextstep.blackjack.state.Deck;
+import nextstep.blackjack.card.Deck;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

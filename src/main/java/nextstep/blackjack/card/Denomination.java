@@ -1,4 +1,4 @@
-package nextstep.blackjack.state;
+package nextstep.blackjack.card;
 
 public enum Denomination {
     ACE(1),

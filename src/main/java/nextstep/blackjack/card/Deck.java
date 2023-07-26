@@ -1,4 +1,4 @@
-package nextstep.blackjack.state;
+package nextstep.blackjack.card;
 
 import java.util.ArrayList;
 import java.util.Arrays;

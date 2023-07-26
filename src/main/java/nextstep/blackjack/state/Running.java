@@ -1,5 +1,8 @@
 package nextstep.blackjack.state;
 
+import nextstep.blackjack.card.Cards;
+import nextstep.blackjack.card.PlayingCard;
+
 public class Running extends Started {
 
     public Running(final Cards cards) {

@@ -1,5 +1,7 @@
 package nextstep.blackjack.state;
 
+import nextstep.blackjack.card.Cards;
+
 public abstract class Started implements State {
 
     public final Cards cards;
