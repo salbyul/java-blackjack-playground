@@ -1,16 +1,13 @@
 package nextstep.blackjack.card;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Deck {
 
-    private static final List<PlayingCard> deck;
+    private static final Stack<PlayingCard> deck;
 
     static {
-        deck = new ArrayList<>();
+        deck = new Stack<>();
         Arrays.stream(Denomination.values())
                 .forEach(denomination -> Arrays.stream(Suit.values())
                         .forEach(suit -> deck.add(new PlayingCard(denomination, suit))));
@@ -22,6 +19,6 @@ public class Deck {
     }
 
     public static PlayingCard getCard() {
-        return deck.get(0);
+        return deck.pop();
     }
 }
