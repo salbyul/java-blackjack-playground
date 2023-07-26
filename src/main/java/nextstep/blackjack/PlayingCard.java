@@ -9,4 +9,8 @@ public class PlayingCard {
         this.denomination = denomination;
         this.suit = suit;
     }
+
+    public int getValue() {
+        return this.denomination.getValue();
+    }
 }

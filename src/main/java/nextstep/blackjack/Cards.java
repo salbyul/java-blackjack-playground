@@ -15,4 +15,14 @@ public class Cards {
     public int size() {
         return this.cards.size();
     }
+
+    public void add(final PlayingCard card) {
+        this.cards.add(card);
+    }
+
+    public boolean isBust() {
+        return cards.stream()
+                .map(PlayingCard::getValue)
+                .reduce(0, Integer::sum) > 21;
+    }
 }
